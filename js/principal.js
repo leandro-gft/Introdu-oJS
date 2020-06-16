@@ -39,5 +39,26 @@ for (var i = 0; i < 5; i++) {
     }
 }
 
+/*
+titulo.addEventListener("click", mostraMensagem);
+
+function mostraMensagem(){
+    console.log("Fui clicado");  
+}
+
+//função anonima
+titulo.addEventListener("click", function(){
+    console.log("Fui clicado")    
+});*/
+
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click", function(){
+    event.preventDefault();
+    console.log("Botao clicado");
+    
+});
+
+
+
 
 
