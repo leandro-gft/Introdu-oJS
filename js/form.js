@@ -18,27 +18,29 @@ botaoAdicionar.addEventListener("click", function () {
     //extraindo indormacoes do paciente do form
     var paciente = obtemPacientedoFormulario(form);
 
-    //cria tr e td do paciente
-    var pacienteTr = montaTr(paciente);
-
     var erros = validaPaciente(paciente);
-
     //validando paciente
     if (erros.length > 0) {
         exibeMensagemErro(erros);
         return; //sai da função e interrompe a sequencia de comandos
     }
-    //adicionando paciente na tabela
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+
+    adicionaPacienteNaTabela(paciente);
 
     form.reset(); //limpa formulario
 
     var mensagensErro = document.querySelector("#mensagem-erro");
     mensagensErro.innerHTML = "";
 
-
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    //cria tr e td do paciente
+    var pacienteTr = montaTr(paciente);
+    //adicionando paciente na tabela
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function obtemPacientedoFormulario(form) {
 
@@ -88,17 +90,17 @@ function validaPaciente(paciente) {
 
     var erros = [];
 
-    if(paciente.nome.length == 0) erros.push("Preencha o campo nome ")
+    if (paciente.nome.length == 0) erros.push("Preencha o campo nome ")
 
-    if(paciente.peso.length == 0) erros.push("Preencha o campo peso ")
+    if (paciente.peso.length == 0) erros.push("Preencha o campo peso ")
 
-    if(paciente.altura.length == 0) erros.push("Preencha o campo altura ")
+    if (paciente.altura.length == 0) erros.push("Preencha o campo altura ")
 
     if (!validaPeso(paciente.peso)) erros.push("O peso é inválido"); //função push coloca dentro do array
 
     if (!validaAltura(paciente.altura)) erros.push("A altura é inválida");
 
-    if(paciente.gordura.length == 0) erros.push("Preencha o campo gordura ")
+    if (paciente.gordura.length == 0) erros.push("Preencha o campo gordura ")
 
     return erros;
 }
